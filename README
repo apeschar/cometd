@@ -1,0 +1,39 @@
+cometd is an Erlang implementation of a comet server.
+
+It consists of an HTTP server based on Mochiweb and a simple control
+server.
+
+usage
+-----
+
+  > cometd:start(HttpPort, ControlPort).
+
+http server
+-----------
+
+The following paths are available:
+
+  /longpoll/Channel/LastID
+    Get one message from Channel, with its message ID higher than LastId.
+    Replies with javascript: _msg(ID, Channel, Data);
+    After receiving a message, you need to store its ID to use as LastId
+    in the next request.
+
+I will add a Javascript library to this distribution in the near future.
+
+control protocol
+----------------
+
+The control protocol is command-oriented and very simple. Simply connect
+to your host at ControlPort and send one of these commands. In case of any
+errors you will receive a reply like this:
+
+  ERROR: reason
+
+Commands:
+
+  MESSAGE Channel Data
+    Post a message containing Data to Channel. Replies with "OK".
+  PING
+    Keep-alive message. Replies with "PONG".
+
