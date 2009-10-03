@@ -15,9 +15,11 @@ The following paths are available:
 
   /longpoll/Channel/LastID
     Get one message from Channel, with its message ID higher than LastId.
-    Replies with javascript: _msg(ID, Channel, Data);
     After receiving a message, you need to store its ID to use as LastId
     in the next request.
+    
+    Replies with javascript: _msg(ID, Channel, Data);
+    Or after 5s: _msg_timeout();
 
 I will add a Javascript library to this distribution in the near future.
 
