@@ -19,6 +19,12 @@ Reloading the Control server:
   > code:soft_purge(msgbrokerserv).
   > code:load_file(msgbrokerserv).
 
+You can start the server from a shell script like this:
+
+  erl -pa ./ebin -noinput -eval 'cometd:start(8080, 6780), receive 0 -> 0 end.'
+
+You could use daemontools or god.rb to run it as a daemon.
+
 http server
 -----------
 
