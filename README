@@ -8,6 +8,16 @@ usage
 
   > cometd:start(HttpPort, ControlPort).
 
+cometd supports live code reloading, like any good erlang program. ;)
+
+Reloading the HTTP server:
+  > code:soft_purge(cometd).
+  > code:load_file(cometd).
+
+Reloading the Control server:
+  > code:soft_purge(msgbrokerserv).
+  > code:load_file(msgbrokerserv).
+
 http server
 -----------
 
