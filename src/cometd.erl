@@ -17,6 +17,8 @@ start(Port, ControlPort) ->
     L = fun(R) -> ?MODULE:loop(R, Broker, ReLongpoll) end,
     {ok, _} = mochiweb_http:start([{name, ?MODULE}, {loop, L}, {port, Port}]),
 
+    io:format("Started cometd HTTP server on port ~p.~nStarted control server on port ~p.~n", [Port, ControlPort]),
+
     {ok, Broker}.
 
 loop(Req, Broker, ReLongpoll) ->
